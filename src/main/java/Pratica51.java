@@ -1,5 +1,7 @@
 import utfpr.ct.dainf.if62c.pratica.Matriz;
 import utfpr.ct.dainf.if62c.pratica.MatrizInvalidaException;
+import utfpr.ct.dainf.if62c.pratica.ProdMatrizesIncompativeisException;
+import utfpr.ct.dainf.if62c.pratica.SomaMatrizesIncompativeisException;
 
 /**
  * IF62C Fundamentos de Programação 2
@@ -10,11 +12,13 @@ public class Pratica51 {
 
     public static void main(String[] args) throws Exception {
         
+        
+        try {
         // Criando os objetos
         Matriz primeira = new Matriz(3, 3);
         Matriz segunda = new Matriz(3, 3);
         Matriz erro = new Matriz(0, 3);
-        Matriz somaErro = new Matriz(2, 3);
+        Matriz somaErro = new Matriz(1, 3);
         
         // Criando as variáveis associadas aos objetos
         double[][] m1 = primeira.getMatriz();
@@ -44,9 +48,6 @@ public class Pratica51 {
         mS[0][0] = 2.0;
         mS[0][1] = 2.0;
         mS[0][2] = 2.0;
-        mS[1][0] = 2.0;
-        mS[1][1] = 2.0;
-        mS[1][2] = 2.0;
         
         /*
         // Imprimindo as matrizes originais
@@ -61,6 +62,8 @@ public class Pratica51 {
         Matriz errada = primeira.soma(somaErro);
         Matriz errado = somaErro.prod(primeira);
         
+        System.out.println(errada);
+        
         /*
         // Imprimindo a matriz soma
         System.out.println("Soma: ");
@@ -70,6 +73,12 @@ public class Pratica51 {
         System.out.println("Produto: ");
         System.out.println(produto);
         */
+        
+        } catch (MatrizInvalidaException | SomaMatrizesIncompativeisException |
+                ProdMatrizesIncompativeisException invalida) {
+            System.out.println("Ocorreu um erro de: "
+            + invalida.getLocalizedMessage());
+        }
         
     }
 }

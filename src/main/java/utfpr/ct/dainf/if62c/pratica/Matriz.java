@@ -16,14 +16,9 @@ public class Matriz {
      */
     public Matriz(int m, int n) throws MatrizInvalidaException {
         
-        try {
-        if(m<=0 || n<=0)
+        if(m<=0 || n<=0) 
             throw new MatrizInvalidaException(m, n);
-
-        } catch (MatrizInvalidaException ex) {
-            System.out.println("Ocorreu um erro de: "
-            + ex.getLocalizedMessage());
-        }
+        
         mat = new double[m][n];
     }
     
@@ -57,28 +52,17 @@ public class Matriz {
     public Matriz soma(Matriz m) throws SomaMatrizesIncompativeisException, 
             MatrizInvalidaException {   
 
-        try{
-        if(mat.length != m.mat.length ||mat[0].length != m.mat[0].length)
-            throw new SomaMatrizesIncompativeisException(this, m);
-        
         Matriz retornada;
         retornada = new Matriz(mat.length,mat[0].length);
-        
+  
+        if(mat.length != m.mat.length || mat[0].length != m.mat[0].length)
+            throw new SomaMatrizesIncompativeisException(this, m);
+
         for(int i=0;i < mat.length ;i++)
             for(int j=0;j < mat[0].length ;j++)
                 retornada.mat[i][j] = m.mat[i][j] + mat[i][j];
         
         return retornada;
-        
-        } catch (SomaMatrizesIncompativeisException ex) {
-            System.out.println("Ocorreu um erro de: "
-            + ex.getLocalizedMessage());
-        } catch (MatrizInvalidaException ex2) {
-            System.out.println("Ocorreu um erro de: "
-            + ex2.getLocalizedMessage());
-        }
-        
-        return null;
     }
 
     /**
@@ -88,29 +72,20 @@ public class Matriz {
      */
     public Matriz prod(Matriz m) throws ProdMatrizesIncompativeisException,
             MatrizInvalidaException {
+        
         int i, j, k;
-       
-        try {
+        Matriz Produto = new Matriz(mat.length, m.mat[0].length);
+        
         if(mat.length != m.mat[0].length)
             throw new ProdMatrizesIncompativeisException(m, this);
-        Matriz Produto = new Matriz(mat.length, m.mat[0].length);
-       
+
         for (i=0; i < mat.length; i++)
             for (j = 0; j < m.mat[0].length; j++)
                 for(k = 0 ; k < mat[0].length ; k++) {
                     Produto.mat[i][j] += mat[i][k] * m.mat[k][j];
                 }
-       
-        return Produto;
-        } catch (ProdMatrizesIncompativeisException ex) {
-            System.out.println("Ocorreu um erro de: "
-            + ex.getLocalizedMessage());
-        } catch (MatrizInvalidaException ex2) {
-            System.out.println("Ocorreu um erro de: "
-            + ex2.getLocalizedMessage());
-        }
         
-        return null;
+        return Produto;
     }
 
     /**
