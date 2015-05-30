@@ -19,8 +19,7 @@ public class Pratica51 {
         try {
         Matriz erro = new Matriz(0, 3);
         } catch (MatrizInvalidaException invalida) {
-            System.out.println("Ocorreu um erro de: "
-            + invalida.getLocalizedMessage());
+            System.out.println(invalida.getLocalizedMessage());
         }
         // Criando as variáveis associadas aos objetos
         double[][] m1 = primeira.getMatriz();
@@ -63,16 +62,14 @@ public class Pratica51 {
         Matriz soma = primeira.soma(segunda);
         Matriz errada = primeira.soma(somaErro);
         } catch (SomaMatrizesIncompativeisException somaException) {
-            System.out.println("Ocorreu um erro de: "
-            + somaException.getLocalizedMessage());
+            System.out.println(somaException.getLocalizedMessage());
         }
             
         try {
         Matriz produto = primeira.prod(segunda);
         Matriz errado = somaErro.prod(primeira);
         } catch (ProdMatrizesIncompativeisException prodException) {
-            System.out.println("Ocorreu um erro de: "
-            + prodException.getLocalizedMessage());
+            System.out.println(prodException.getLocalizedMessage());
         } 
         
         /*
