@@ -35,6 +35,7 @@ public class Matriz {
      * @return A matriz transposta.
      */
     public Matriz getTransposta() throws MatrizInvalidaException {
+        try {
         Matriz t = new Matriz(mat[0].length, mat.length);
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
@@ -42,6 +43,10 @@ public class Matriz {
             }
         }
         return t;
+        } catch(MatrizInvalidaException e){
+            System.err.println(e);
+            return null;
+        }
     }
     
     /**

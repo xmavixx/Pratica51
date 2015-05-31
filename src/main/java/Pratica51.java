@@ -12,15 +12,12 @@ public class Pratica51 {
 
     public static void main(String[] args) throws Exception {
         
+        try {
         Matriz primeira = new Matriz(3, 3);
         Matriz segunda = new Matriz(3, 3);
         Matriz somaErro = new Matriz(1, 3);
-        
-        try {
         Matriz erro = new Matriz(0, 3);
-        } catch (MatrizInvalidaException invalida) {
-            System.out.println(invalida.getLocalizedMessage());
-        }
+
         // Criando as variáveis associadas aos objetos
         double[][] m1 = primeira.getMatriz();
         double[][] m2 = segunda.getMatriz();
@@ -57,21 +54,13 @@ public class Pratica51 {
         System.out.println("Matriz original 2: ");
         System.out.println(segunda);
         */
-        
-        try {
+
         Matriz soma = primeira.soma(segunda);
         Matriz errada = primeira.soma(somaErro);
-        } catch (SomaMatrizesIncompativeisException somaException) {
-            System.out.println(somaException.getLocalizedMessage());
-        }
-            
-        try {
+
         Matriz produto = primeira.prod(segunda);
         Matriz errado = somaErro.prod(primeira);
-        } catch (ProdMatrizesIncompativeisException prodException) {
-            System.out.println(prodException.getLocalizedMessage());
-        } 
-        
+
         /*
         // Imprimindo a matriz soma
         System.out.println("Soma: ");
@@ -81,6 +70,9 @@ public class Pratica51 {
         System.out.println("Produto: ");
         System.out.println(produto);
         */
-        
+        } catch (MatrizInvalidaException | ProdMatrizesIncompativeisException | SomaMatrizesIncompativeisException e) 
+        {
+            System.out.println(e.getLocalizedMessage());
+        }
     }
 }
