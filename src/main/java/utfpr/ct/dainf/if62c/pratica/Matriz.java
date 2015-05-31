@@ -60,8 +60,8 @@ public class Matriz {
         Matriz retornada;
         retornada = new Matriz(mat.length,mat[0].length);
   
-        if(mat.length != m.mat.length || mat[0].length != m.mat[0].length)
-            throw new SomaMatrizesIncompativeisException(this, m);
+        if(m.getMatriz().length != mat.length || m.getMatriz()[0].length != mat[0].length)
+             throw new SomaMatrizesIncompativeisException(this, m);
 
         for(int i=0;i < mat.length ;i++)
             for(int j=0;j < mat[0].length ;j++)
@@ -81,7 +81,7 @@ public class Matriz {
         int i, j, k;
         Matriz Produto = new Matriz(mat.length, m.mat[0].length);
         
-        if(mat.length != m.mat[0].length)
+        if(mat[0].length != m.mat.length)
             throw new ProdMatrizesIncompativeisException(m, this);
 
         for (i=0; i < mat.length; i++)
