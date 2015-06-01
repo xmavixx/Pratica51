@@ -7,7 +7,7 @@ package utfpr.ct.dainf.if62c.pratica;
 
 /**
  *
- * @author askoda
+ * @author vitholken
  */
 public class MatrizInvalidaException extends Exception {
     private int linhas;
